@@ -4,7 +4,7 @@ var servers = [];
 
 module.exports.addServer = (server) => {
     servers.push(server);
-    server.on('message', this.processMessage(user, cmd, arg));
+    server.on('message', this.processMessage);
 };
 
 sendUser = (user, message) => {
@@ -60,7 +60,7 @@ createGame = () => {
 joinGame = (user, game) => {
     //see if user exists yet
     var existingPlayer = game.players.filter((player) => {
-        return player.id == user;
+        return player.Id == user;
     });
     if(existingPlayer.length == 1) {
         nextPickStep(user, game);

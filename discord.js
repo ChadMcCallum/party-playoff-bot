@@ -13,9 +13,9 @@ var DiscordServer = function() {
         autorun: true
     });
     bot.on('ready', function (evt) {
-        logger.info('Connected');
-        logger.info('Logged in as: ');
-        logger.info(bot.username + ' - (' + bot.id + ')');
+        console.log('Connected');
+        console.log('Logged in as: ');
+        console.log(bot.username + ' - (' + bot.id + ')');
     });
     bot.on('message', function (user, userID, channelID, message, evt) {
         if (message.substring(0, 1) == '!') {
@@ -36,5 +36,7 @@ var DiscordServer = function() {
 
     return me;
 }
+
+module.exports = DiscordServer;
 
 util.inherits(DiscordServer, emitter);

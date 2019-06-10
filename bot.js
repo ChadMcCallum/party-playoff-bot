@@ -1,8 +1,8 @@
 var emitter = require("events").EventEmitter;
 var util = require("util");
-var DiscordServer = require("./discord.js");
 
 var game = require('./game.js');
+var DiscordServer = require("./discord.js");
 
 var ConsoleServer = function() {
     var me = this;
@@ -18,7 +18,10 @@ util.inherits(ConsoleServer, emitter);
 
 game.addServer(new ConsoleServer());
 
-game.addServer(new DiscordServer());
+var discordServer = new DiscordServer();
+console.log(discordServer);
+
+game.addServer(discordServer);
 
 game.processMessage("Chad", "join");
 game.processMessage("Nathan", "join");
