@@ -3,6 +3,8 @@ var util = require('util');
 var Discord = require('discord.io');
 // Initialize Discord Bot
 
+const MessageDelay = 1000;
+
 function DiscordServer(token) {
     var me = this;
     this.bot = new Discord.Client({
@@ -26,14 +28,14 @@ function DiscordServer(token) {
         }    
     });
     setInterval(() => {
-        if(this.messageQueue.length > 0) {
-            var nextMessage = this.messageQueue.splice(0, 1);
-            this.bot.sendMessage({
+        if(me.messageQueue.length > 0) {
+            var nextMessage = me.messageQueue.splice(0, 1)[0];
+            me.bot.sendMessage({
                 to: nextMessage.user,
                 message: nextMessage.message
             });
         }
-    }, 250);
+    }, MessageDelay);
 }
 util.inherits(DiscordServer, emitter);
 

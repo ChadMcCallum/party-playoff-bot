@@ -4,7 +4,7 @@ var servers = [];
 
 module.exports.addServer = (server) => {
     servers.push(server);
-    server.on('message', this.processMessage);
+    server.on('message', processMessage);
 };
 
 sendUser = (user, message) => {
@@ -88,7 +88,7 @@ welcomePlayer = (user, game) => {
 promptForCategoryChoice = (user, type, game) => {
     var subjects = data.getGameTypeSubjects(type, game);
     sendUser(user, `The category is ${data.getTypeName(type)}.  Which of these 8 items do you think will win the category?`);
-    var subjectString = subjects.reduce((result, subject, index) => result += `${index+1})${subject}, `, "");
+    var subjectString = subjects.reduce((result, subject, index) => result += `${index+1}) ${subject}, `, "");
     sendUser(user, subjectString.substring(0, subjectString.length - 2));
     sendUser(user, "(Submit your choice by typing !pick followed by the number)");
     sendUser(user, `Remember, the game-deciding question will be... '${game.knockoutQuestion}'`);
@@ -100,6 +100,8 @@ nextPickStep = (user, game) => {
     if(unpickedTypes.length == 0) {
         if(game.started) {
             sendUser(user, "We've already started the game!  What're you doing!?");
+        } else {
+            sendUser(user, "Thanks!  Now sit back and wait for the arguing to begin!");
         }
     } else {
         var nextUnpickedType = unpickedTypes.sort()[0];
@@ -124,7 +126,7 @@ nextPickStep = (user, game) => {
     }
 };
 
-module.exports.processMessage = (user, cmd, args) => {
+processMessage = (user, cmd, args) => {
     var game = getGame();
     if(cmd == "join") {
         joinGame(user, game);
@@ -136,15 +138,14 @@ module.exports.processMessage = (user, cmd, args) => {
             if(!selectedValue) {
                 sendUser(user, "Please select a valid number");
             } else {
-                recordChoice(user, selectedValue);
+                recordChoice(user, selectedValue, game);
             }
         }
         nextPickStep(user, game);
     }
 };
 
-recordChoice = (user, subjectPick) => {
-    var game = getGame();
+recordChoice = (user, subjectPick, game) => {
     var player = game.players.filter(p => p.Id == user)[0];
     if(!player) {
         sendUser(user, "Hey, you haven't joined the game yet!  Start by typing !join in the channel.");
@@ -157,7 +158,7 @@ recordChoice = (user, subjectPick) => {
             nextUnpickedType = unpickedTypes.sort()[0];
             var subject = null;
             if(nextUnpickedType <= 4) {
-                var subjects = data.getSubjectsByType(nextUnpickedType);
+                var subjects = data.getGameTypeSubjects(nextUnpickedType, game);
                 if(subjectPick-1 < subjects.length) {
                     subject = subjects[subjectPick-1];
                 }
