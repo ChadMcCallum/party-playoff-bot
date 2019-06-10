@@ -1,0 +1,11 @@
+{
+    "name": "party-playoff-bot",
+    "version": "0.0.1",
+    "description": "discord bot to run party playoff games",
+    "main": "bot.js",
+    "author": "ChadEmm",
+    "dependencies": {
+        "discord.io": "2.5.3",
+        "winston": "3.2.1"
+    }
+}

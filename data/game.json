@@ -1,0 +1,226 @@
+{
+	"brackets": [
+		{
+			"subject1": "Mister Rogers",
+			"subject2": "Mary Poppins",
+			"type": 1,
+			"question": "Who would look better wearing a faux mink coat, and why?",
+			"votes": []
+		},
+		{
+			"subject1": "A Gym Teacher",
+			"subject2": "The Sweedish Chef",
+			"type": 1,
+			"question": "Who would you rather clone 50 times?",
+			"votes": []
+		},
+		{
+			"subject1": "Shaquille O'Neal",
+			"subject2": "Mr. Potato Head",
+			"type": 1,
+			"question": "Who is more likely to be abducted by aliens?",
+			"votes": []
+		},
+		{
+			"subject1": "Vanilla Ice",
+			"subject2": "Tony Soprano",
+			"type": 1,
+			"question": "Whose mind would you rather read?",
+			"votes": []
+		},
+		{
+			"subject1": "Country Club",
+			"subject2": "Disneyland",
+			"type": 2,
+			"question": "Where are you less likely to stub your toe?",
+			"votes": []
+		},
+		{
+			"subject1": "Doctor's Office",
+			"subject2": "Colosseum",
+			"type": 2,
+			"question": "Where would you be more likely to paint a masterpiece?",
+			"votes": []
+		},
+		{
+			"subject1": "Strip Mall",
+			"subject2": "Drive-In Theater",
+			"type": 2,
+			"question": "Where do people have more fun?",
+			"votes": []
+		},
+		{
+			"subject1": "International Space Station",
+			"subject2": "Camelot",
+			"type": 2,
+			"question": "Where are you more likely to experience the applause of strangers?",
+			"votes": []
+		},
+		{
+			"subject1": "Trick-Or-Treating",
+			"subject2": "Sneaking Out",
+			"type": 3,
+			"question": "Which would be funnier in a Saturday Night Live skit?",
+			"votes": []
+		},
+		{
+			"subject1": "Logrolling",
+			"subject2": "Going out to Eat",
+			"type": 3,
+			"question": "Which is more Zen?",
+			"votes": []
+		},
+		{
+			"subject1": "Cow Tipping",
+			"subject2": "Chugging",
+			"type": 3,
+			"question": "Which would you rather dedicate one day of the year to?",
+			"votes": []
+		},
+		{
+			"subject1": "Blowing Kisses",
+			"subject2": "Brushing Your Teeth",
+			"type": 3,
+			"question": "Which goes better with a classic rock soundtrack?",
+			"votes": []
+		},
+		{
+			"subject1": "Shag Carpet",
+			"subject2": "Mullet",
+			"type": 4,
+			"question": "Which would look better in a Picasso painting?",
+			"votes": []
+		},
+		{
+			"subject1": "Lapdog",
+			"subject2": "Sliced Bread",
+			"type": 4,
+			"question": "Which is more of a pure luxury?",
+			"votes": []
+		},
+		{
+			"subject1": "Mood Ring",
+			"subject2": "Romance Novel",
+			"type": 4,
+			"question": "Which are you more likely to discover in a mad scientist's lab?",
+			"votes": []
+		},
+		{
+			"subject1": "Handcuffs",
+			"subject2": "Canned Ham",
+			"type": 4,
+			"question": "Which would you rather receive as a gift from a secret admirer?",
+			"votes": []
+		}
+	],
+	"players": [
+		{
+			"Id": "Chad",
+			"picks": [
+				{
+					"type": 1,
+					"subject": "Snoop Dogg"
+				},
+				{
+					"type": 2,
+					"subject": "Empire State Building"
+				},
+				{
+					"type": 3,
+					"subject": "Getting a Makeover"
+				},
+				{
+					"type": 4,
+					"subject": "The Kitchen Sink"
+				},
+				{
+					"type": 5,
+					"subject": "Snoop Dogg"
+				},
+				{
+					"type": 6,
+					"subject": "Getting a Makeover"
+				},
+				{
+					"type": 7,
+					"subject": "Snoop Dogg"
+				}
+			]
+		},
+		{
+			"Id": "Nathan",
+			"picks": [
+				{
+					"type": 1,
+					"subject": "Ghandi"
+				},
+				{
+					"type": 2,
+					"subject": "Mount Everest"
+				},
+				{
+					"type": 3,
+					"subject": "Drag Racing"
+				},
+				{
+					"type": 4,
+					"subject": "Test Tube"
+				},
+				{
+					"type": 5,
+					"subject": "Mount Everest"
+				},
+				{
+					"type": 6,
+					"subject": "Test Tube"
+				},
+				{
+					"type": 7,
+					"subject": "Test Tube"
+				}
+			]
+		},
+		{
+			"Id": "Chad",
+			"picks": []
+		},
+		{
+			"Id": "Nathan",
+			"picks": []
+		},
+		{
+			"Id": "Chad",
+			"picks": []
+		},
+		{
+			"Id": "Nathan",
+			"picks": []
+		},
+		{
+			"Id": "Chad",
+			"picks": []
+		},
+		{
+			"Id": "Nathan",
+			"picks": []
+		},
+		{
+			"Id": "Chad",
+			"picks": []
+		},
+		{
+			"Id": "Nathan",
+			"picks": []
+		},
+		{
+			"Id": "Chad",
+			"picks": []
+		},
+		{
+			"Id": "Nathan",
+			"picks": []
+		}
+	],
+	"started": false,
+	"knockoutQuestion": "Which makes a better subject for a bumper sticker?"
+}
