@@ -12,7 +12,6 @@ function DiscordServer(token) {
         autorun: true
     });
     this.messageQueue = [];
-    console.log(`Token: ${token}`);
     this.bot.on('ready', function (evt) {
         console.log('Connected');
         console.log('Logged in as: ');
@@ -27,6 +26,7 @@ function DiscordServer(token) {
             me.emit('message', userID, cmd, args);
         }    
     });
+    this.bot.connect();
     setInterval(() => {
         if(me.messageQueue.length > 0) {
             var nextMessage = me.messageQueue.splice(0, 1)[0];
