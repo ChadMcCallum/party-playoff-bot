@@ -143,7 +143,10 @@ processMessage = (user, cmd, args) => {
         }
         nextPickStep(user, game);
     } else if(cmd == "reset") {
-        console.log(user);
+        if(user == "331444406408445954") {
+            var game = createGame();
+            data.saveGame(game);
+        }
     }
 };
 

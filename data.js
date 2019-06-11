@@ -45,4 +45,3 @@ module.exports.getTypeName = (type) => {
             return "Things";
     }
 };
-
