@@ -12,10 +12,13 @@ function DiscordServer(token) {
         autorun: true
     });
     this.messageQueue = [];
+    this.bot.on('log', function(level, message) {
+        console.log(`${level}: ${message}`);
+    });
     this.bot.on('ready', function (evt) {
         console.log('Connected');
         console.log('Logged in as: ');
-        console.log(this.bot.username + ' - (' + this.bot.id + ')');
+        console.log(me.bot.username + ' - (' + me.bot.id + ')');
     });
     this.bot.on('message', function (user, userID, channelID, message, evt) {
         if (message.substring(0, 1) == '!') {
