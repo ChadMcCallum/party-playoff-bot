@@ -80,14 +80,14 @@ welcomePlayer = (user, game) => {
     };
     game.players.push(player);
     data.saveGame(game);
-    sendUser(user, "Hey there!  So you wanna play Party Playoff, eh?  Well, first we have to write down your picks for each bracket");
-    sendUser(user, `For this game, the game-deciding question will be... '${game.knockoutQuestion}'`);
+    sendUser(user, "Hey there!  So you wanna play Party Playoff, eh? Here's what it's about.\r\nWe've picked 32 random people, places, actions, and things, and they'll be pit against one another to see who rises to the top.\r\nBefore we start, however, each player must pick which subjects they think will make it to the finals of their category, and eventually take the whole thing.");
+    sendUser(user, `You get to find out the last question of the game in advance - for this game, the game-deciding question will be... '${game.knockoutQuestion}'`);
     promptForCategoryChoice(user, 1, game);
 };
 
 promptForCategoryChoice = (user, type, game) => {
     var subjects = data.getGameTypeSubjects(type, game);
-    sendUser(user, `The category is ${data.getTypeName(type)}.  Which of these 8 items do you think will win the category?`);
+    sendUser(user, `The ${type == 1 ? "first": "next"} category is ${data.getTypeName(type)}.  Which of these 8 subjects do you think will win the category?`);
     var subjectString = subjects.reduce((result, subject, index) => result += `${index+1}) ${subject}, `, "");
     sendUser(user, subjectString.substring(0, subjectString.length - 2));
     sendUser(user, "(Submit your choice by typing !pick followed by the number)");
@@ -101,7 +101,7 @@ nextPickStep = (user, game) => {
         if(game.started) {
             sendUser(user, "We've already started the game!  What're you doing!?");
         } else {
-            sendUser(user, "Thanks!  Now sit back and wait for the arguing to begin!");
+            sendUser(user, "Thanks, we've got all your picks recorded.  Now sit back and wait for the arguing to begin!");
         }
     } else {
         var nextUnpickedType = unpickedTypes.sort()[0];
@@ -110,18 +110,18 @@ nextPickStep = (user, game) => {
         } else if(nextUnpickedType == 5) { //semifinal 1
             sendUser(user, "Alright, time for the semifinals - for the first matchup, who do you expect to win?");
             sendUser(user, `1) ${player.picks[0].subject} or 2) ${player.picks[1].subject}?`)
-            sendUser(user, `Remember, the game-deciding question will be... '${game.knockoutQuestion}'`);
             sendUser(user, "(Submit your choice by typing !pick followed by the number)");
+            sendUser(user, `Remember, the game-deciding question will be... '${game.knockoutQuestion}'`);
         } else if(nextUnpickedType == 6) { //semifinal 1
             sendUser(user, "For the second semifinal matchup, who do you expect to win?");
             sendUser(user, `1) ${player.picks[2].subject} or 2) ${player.picks[3].subject}?`)
-            sendUser(user, `Remember, the game-deciding question will be... '${game.knockoutQuestion}'`);
             sendUser(user, "(Submit your choice by typing !pick followed by the number)");
+            sendUser(user, `Remember, the game-deciding question will be... '${game.knockoutQuestion}'`);
         } else if(nextUnpickedType == 7) { //final
             sendUser(user, "And finally, who do you think will win the whole thing?");
             sendUser(user, `1) ${player.picks[4].subject} or 2) ${player.picks[5].subject}?`)
-            sendUser(user, `Remember, the game-deciding question will be... '${game.knockoutQuestion}'`);
             sendUser(user, "(Submit your choice by typing !pick followed by the number)");
+            sendUser(user, `Remember, the game-deciding question will be... '${game.knockoutQuestion}'`);
         }
     }
 };
@@ -142,6 +142,8 @@ processMessage = (user, cmd, args) => {
             }
         }
         nextPickStep(user, game);
+    } else if(cmd == "reset") {
+        console.log(user);
     }
 };
 
@@ -187,6 +189,7 @@ recordChoice = (user, subjectPick, game) => {
                     "subject": subject
                 });
                 data.saveGame(game);
+                sendUser(user, `Alright, recorded ${subject} as your pick.`)
             } else {
                 sendUser(user, "That appears to be an invalid selection - please try again");
             }
