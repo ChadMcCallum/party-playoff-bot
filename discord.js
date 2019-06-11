@@ -7,6 +7,7 @@ const MessageDelay = 1000;
 
 function DiscordServer(token) {
     var me = this;
+    console.log("Token: " + token);
     this.bot = new Discord.Client({
         token: token,
         autorun: true
