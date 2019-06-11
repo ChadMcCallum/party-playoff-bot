@@ -10,7 +10,7 @@ function DiscordServer(token) {
     console.log("Token: " + token);
     this.bot = new Discord.Client({
         token: token,
-        autorun: true
+        autorun: false
     });
     this.messageQueue = [];
     this.bot.on('log', function(level, message) {
@@ -30,6 +30,7 @@ function DiscordServer(token) {
             me.emit('message', userID, cmd, args);
         }    
     });
+    this.bot.connect();
     setInterval(() => {
         if(me.messageQueue.length > 0) {
             var nextMessage = me.messageQueue.splice(0, 1)[0];
